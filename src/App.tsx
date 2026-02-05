@@ -666,7 +666,7 @@ function App() {
                       <CardContent className="p-6">
                         <h3 className="text-lg font-bold mb-4">German Hanger Venue Layout - Detailed Map</h3>
                         <img 
-                          src="/venue-map.png" 
+                          src="/DTI/venue-map.png" 
                           alt="Venue Map" 
                           className="w-full max-w-4xl mx-auto rounded-lg border"
                         />
@@ -866,7 +866,7 @@ function App() {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-bold mb-4">German Hanger Venue Map</h3>
                   <img 
-                    src="/venue-map.png" 
+                    src="/DTI/venue-map.png" 
                     alt="Venue Map" 
                     className="w-full max-w-4xl mx-auto rounded-lg border"
                   />

@@ -162,6 +162,7 @@ const slideVariants = {
 // Detailed Visual Scene Component based on actual venue map
 function SceneVisual({ isPeak }: { isPeak: boolean }) {
   const crowdCount = isPeak ? 20 : 6;
+  console.log('SceneVisual rendering - isPeak:', isPeak, 'crowdCount:', crowdCount);
   
   return (
     <div className="relative w-full h-80 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200">

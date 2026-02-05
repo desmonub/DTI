@@ -165,7 +165,35 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
   
   return (
     <div className="relative w-full h-80 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200">
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 280">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+        {/* Define all SVG markers once at the top */}
+        <defs>
+          <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+          </marker>
+          <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#9333ea" />
+          </marker>
+          <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
+          </marker>
+          <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#ec4899" />
+          </marker>
+          <marker id="arrowYellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
+          </marker>
+          <marker id="arrowYellow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
+          </marker>
+          <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+          </marker>
+          <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+          </marker>
+        </defs>
+        
         {/* --- VENUE STRUCTURE --- */}
         
         {/* Main venue outline */}
@@ -190,20 +218,10 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
         
         {/* Celebrity Entry (Blue) - Top center */}
         <line x1="250" y1="20" x2="250" y2="30" stroke="#2563eb" strokeWidth="4" markerEnd="url(#arrowBlue)" />
-        <defs>
-          <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
-          </marker>
-        </defs>
         <text x="270" y="25" fontSize="9" fill="#2563eb">Celebrity Entry</text>
         
         {/* Celebrity Exit (Purple) - Top center going up */}
         <line x1="270" y1="30" x2="270" y2="20" stroke="#9333ea" strokeWidth="3" markerEnd="url(#arrowPurple)" />
-        <defs>
-          <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#9333ea" />
-          </marker>
-        </defs>
         <text x="285" y="18" fontSize="9" fill="#9333ea">Celebrity Exit</text>
         
         {/* --- STRONG BARRICADE (Non-removable) --- */}
@@ -220,55 +238,25 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
         {/* --- ENTRY POINTS (Bottom) --- */}
         {/* Green: General Entry - Bottom center */}
         <line x1="250" y1="260" x2="250" y2="240" stroke="#16a34a" strokeWidth="5" markerEnd="url(#arrowGreen)" />
-        <defs>
-          <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
-          </marker>
-        </defs>
         <text x="250" y="275" fontSize="10" fill="#16a34a" textAnchor="middle" fontWeight="bold">General Entry</text>
         
         {/* Pink: Specially-Abled Entry - Bottom left */}
         <line x1="120" y1="260" x2="120" y2="240" stroke="#ec4899" strokeWidth="5" markerEnd="url(#arrowPink)" />
-        <defs>
-          <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#ec4899" />
-          </marker>
-        </defs>
         <text x="120" y="275" fontSize="9" fill="#ec4899" textAnchor="middle">Accessible Entry</text>
         
         {/* --- EXIT POINTS (Sides) --- */}
         {/* Yellow: Regular Exit Left */}
         <line x1="50" y1="180" x2="20" y2="180" stroke="#eab308" strokeWidth="4" markerEnd="url(#arrowYellow)" />
-        <defs>
-          <marker id="arrowYellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
-          </marker>
-        </defs>
         
         {/* Yellow: Regular Exit Right */}
         <line x1="450" y1="180" x2="480" y2="180" stroke="#eab308" strokeWidth="4" markerEnd="url(#arrowYellow2)" />
-        <defs>
-          <marker id="arrowYellow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
-          </marker>
-        </defs>
         <text x="465" y="195" fontSize="8" fill="#eab308" textAnchor="middle">Regular Exit</text>
         
         {/* Red: Emergency Exit Left */}
         <line x1="50" y1="120" x2="20" y2="120" stroke="#dc2626" strokeWidth="4" markerEnd="url(#arrowRed)" opacity={isPeak ? 1 : 0.3} />
-        <defs>
-          <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
-          </marker>
-        </defs>
         
         {/* Red: Emergency Exit Right */}
         <line x1="450" y1="120" x2="480" y2="120" stroke="#dc2626" strokeWidth="4" markerEnd="url(#arrowRed2)" opacity={isPeak ? 1 : 0.3} />
-        <defs>
-          <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
-          </marker>
-        </defs>
         {isPeak && <text x="465" y="110" fontSize="8" fill="#dc2626" textAnchor="middle" fontWeight="bold">EMERGENCY</text>}
         
         {/* --- CROWD DOTS --- */}

@@ -162,37 +162,44 @@ const slideVariants = {
 // Detailed Visual Scene Component based on actual venue map
 function SceneVisual({ isPeak }: { isPeak: boolean }) {
   const crowdCount = isPeak ? 20 : 6;
-  console.log('SceneVisual rendering - isPeak:', isPeak, 'crowdCount:', crowdCount);
   
   return (
-    <div className="relative w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200" style={{ minHeight: '400px' }}>
-      <svg className="w-full h-full" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet" style={{ minHeight: '400px', display: 'block' }}>
-        <defs>
-          <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
-          </marker>
-          <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#9333ea" />
-          </marker>
-          <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
-          </marker>
-          <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#ec4899" />
-          </marker>
-          <marker id="arrowYellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
-          </marker>
-          <marker id="arrowYellow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
-          </marker>
-          <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
-          </marker>
-          <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
-          </marker>
-        </defs>
+    <div className="w-full space-y-4">
+      {/* Test: Venue Map Header */}
+      <div className="p-4 bg-blue-100 border-2 border-blue-500 rounded-lg text-center">
+        <h3 className="text-xl font-bold text-blue-900">📍 VENUE MAP - {isPeak ? 'PEAK HOURS' : 'NON-PEAK'}</h3>
+        <p className="text-sm text-blue-700">Scroll down to see the venue layout below</p>
+      </div>
+      
+      {/* SVG Venue Map */}
+      <div className="w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200" style={{ minHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <svg className="w-full h-full" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet" style={{ background: '#f8fafc' }}>
+          <defs>
+            <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
+            </marker>
+            <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#9333ea" />
+            </marker>
+            <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#16a34a" />
+            </marker>
+            <marker id="arrowPink" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#ec4899" />
+            </marker>
+            <marker id="arrowYellow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
+            </marker>
+            <marker id="arrowYellow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#eab308" />
+            </marker>
+            <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+            </marker>
+            <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+            </marker>
+          </defs>
         
         {/* Background */}
         <rect width="500" height="280" fill="#f8fafc" />
@@ -344,25 +351,24 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
           {isPeak ? '4,200 / 5,000' : '1,200 / 5,000'}
         </text>
       </svg>
+      </div>
       
-      {/* Scene label and Legend below SVG */}
-      <div className="px-4 py-3 bg-white">
+      {/* Legend */}
+      <div className="bg-slate-50 p-4 rounded-lg border-2 border-slate-200">
+        <h4 className="font-bold text-slate-800 mb-3">📋 Venue Map Legend</h4>
         <div className={`inline-block px-3 py-1.5 rounded-full text-xs font-bold mb-3 ${
           isPeak ? 'bg-red-500 text-white' : 'bg-emerald-500 text-white'
         }`}>
-          {isPeak ? 'PEAK HOURS (85% Capacity)' : 'NON-PEAK (25% Capacity)'}
+          {isPeak ? '🔴 PEAK HOURS (85% Capacity)' : '🟢 NON-PEAK (25% Capacity)'}
         </div>
         
-        {/* Legend */}
-        <div className="bg-slate-50 p-3 rounded text-xs space-y-1 border border-slate-200">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-sm"></div><span>General Entry</span></div>
-            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-pink-500 rounded-sm"></div><span>Accessible Entry</span></div>
-            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-yellow-500 rounded-sm"></div><span>Regular Exit</span></div>
-            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-red-500 rounded-sm"></div><span>Emergency Exit</span></div>
-            <div className="flex items-center gap-2"><div className="w-3 h-0.5 bg-slate-900"></div><span>Strong Barricade</span></div>
-            <div className="flex items-center gap-2"><div className="w-3 h-0.5 border-t-2 border-dashed border-slate-500"></div><span>Removable</span></div>
-          </div>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+          <div className="flex items-center gap-2"><div className="w-4 h-4 bg-green-500 rounded-sm"></div><span className="font-medium">General Entry (Green)</span></div>
+          <div className="flex items-center gap-2"><div className="w-4 h-4 bg-pink-500 rounded-sm"></div><span className="font-medium">Accessible Entry (Pink)</span></div>
+          <div className="flex items-center gap-2"><div className="w-4 h-4 bg-yellow-500 rounded-sm"></div><span className="font-medium">Regular Exit (Yellow)</span></div>
+          <div className="flex items-center gap-2"><div className="w-4 h-4 bg-red-500 rounded-sm"></div><span className="font-medium">Emergency Exit (Red)</span></div>
+          <div className="flex items-center gap-2"><div className="w-4 h-1 bg-slate-900"></div><span className="font-medium">Strong Barricade</span></div>
+          <div className="flex items-center gap-2"><div className="w-4 h-0.5 border-t-2 border-dashed border-slate-500"></div><span className="font-medium">Removable Barricade</span></div>
         </div>
       </div>
     </div>

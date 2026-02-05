@@ -165,9 +165,8 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
   console.log('SceneVisual rendering - isPeak:', isPeak, 'crowdCount:', crowdCount);
   
   return (
-    <div className="relative w-full h-80 bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200">
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
-        {/* Define all SVG markers once at the top */}
+    <div className="relative w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl overflow-hidden border-2 border-slate-200" style={{ minHeight: '400px' }}>
+      <svg className="w-full h-full" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet" style={{ minHeight: '400px', display: 'block' }}>
         <defs>
           <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
             <path d="M0,0 L0,6 L9,3 z" fill="#2563eb" />
@@ -195,7 +194,8 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
           </marker>
         </defs>
         
-        {/* --- VENUE STRUCTURE --- */}
+        {/* Background */}
+        <rect width="500" height="280" fill="#f8fafc" />
         
         {/* Main venue outline */}
         <rect x="50" y="20" width="400" height="240" fill="none" stroke="#334155" strokeWidth="3" rx="4" />
@@ -345,21 +345,25 @@ function SceneVisual({ isPeak }: { isPeak: boolean }) {
         </text>
       </svg>
       
-      {/* Scene label */}
-      <div className={`absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-bold ${
-        isPeak ? 'bg-red-500 text-white' : 'bg-emerald-500 text-white'
-      }`}>
-        {isPeak ? 'PEAK HOURS (85% Capacity)' : 'NON-PEAK (25% Capacity)'}
-      </div>
-      
-      {/* Legend */}
-      <div className="absolute bottom-2 left-2 bg-white/90 p-2 rounded text-xs space-y-1">
-        <div className="flex items-center gap-1"><div className="w-3 h-3 bg-green-500 rounded-sm"></div><span>General Entry</span></div>
-        <div className="flex items-center gap-1"><div className="w-3 h-3 bg-pink-500 rounded-sm"></div><span>Accessible Entry</span></div>
-        <div className="flex items-center gap-1"><div className="w-3 h-3 bg-yellow-500 rounded-sm"></div><span>Regular Exit</span></div>
-        <div className="flex items-center gap-1"><div className="w-3 h-3 bg-red-500 rounded-sm"></div><span>Emergency Exit</span></div>
-        <div className="flex items-center gap-1"><div className="w-3 h-0.5 bg-slate-900"></div><span>Strong Barricade</span></div>
-        <div className="flex items-center gap-1"><div className="w-3 h-0.5 border-t-2 border-dashed border-slate-500"></div><span>Removable</span></div>
+      {/* Scene label and Legend below SVG */}
+      <div className="px-4 py-3 bg-white">
+        <div className={`inline-block px-3 py-1.5 rounded-full text-xs font-bold mb-3 ${
+          isPeak ? 'bg-red-500 text-white' : 'bg-emerald-500 text-white'
+        }`}>
+          {isPeak ? 'PEAK HOURS (85% Capacity)' : 'NON-PEAK (25% Capacity)'}
+        </div>
+        
+        {/* Legend */}
+        <div className="bg-slate-50 p-3 rounded text-xs space-y-1 border border-slate-200">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-sm"></div><span>General Entry</span></div>
+            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-pink-500 rounded-sm"></div><span>Accessible Entry</span></div>
+            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-yellow-500 rounded-sm"></div><span>Regular Exit</span></div>
+            <div className="flex items-center gap-2"><div className="w-3 h-3 bg-red-500 rounded-sm"></div><span>Emergency Exit</span></div>
+            <div className="flex items-center gap-2"><div className="w-3 h-0.5 bg-slate-900"></div><span>Strong Barricade</span></div>
+            <div className="flex items-center gap-2"><div className="w-3 h-0.5 border-t-2 border-dashed border-slate-500"></div><span>Removable</span></div>
+          </div>
+        </div>
       </div>
     </div>
   );
